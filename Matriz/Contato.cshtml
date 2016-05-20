@@ -1,0 +1,99 @@
+﻿@using Br.Com.EbenezerVillage.Aplicacao;
+@using Br.Com.EbenezerVillage.Aplicacao.Auxiliares;
+@using Br.Com.EbenezerVillage.Dominio;
+
+@{
+    Layout = "~/Matriz/_SiteLayout.cshtml";
+    Page.Title = "Contato";
+    Page.ID = Constantes.id_contato;
+}
+
+@{
+    //Recupera as configurações do sistema
+    var config = GerenciadorDeConfiguracao.GetConfiguracoesDaMatriz(Session);
+    MensagemDoCliente mensagem = new MensagemDoCliente();
+
+    //Envio da reserva
+    if(IsPost) {
+        mensagem.Nome = Request["cntct-nome"].Trim();
+        mensagem.Email = Request["cntct-email"].Trim();
+        mensagem.Telefone = Request["cntct-telefone"].Trim();
+        mensagem.Conteudo = Request["cntct-mensagem"].Trim();
+        mensagem.Conhecimento = Request["cntct-conhecimento"].Trim();
+
+        //Envia mensagem do cliente
+        var bEnviada = GerenciadorDeMensagens.EnviarMensagemDoCliente(config, mensagem);
+
+        //Redireciona para a tela de resposta
+        Response.Redirect(string.Format("~/matriz/resposta/{0}", bEnviada ? 1 : 0));
+    }
+}
+
+<script>
+    jQuery(function($){
+        $("#cntct-telefone").mask("(99) 9999-9999",{placeholder:" "});
+    });
+</script>
+
+<div class="content-panel shaded">
+    <div class="content-title">
+        <h3>Fale Conosco</h3>
+    </div>
+
+    <div class="left-content" style="width: 500px;">
+
+        <p><strong>Utilize o formulário abaixo para enviar dúvidas, sugestões ou deixar uma mensagem:</strong></p>
+
+        <div class="form-container">
+            <form id="cntct-form" action="" method="post" onsubmit="showLoading()">
+                <div class="form-item">
+                    <label for="cntct-nome">Nome:</label>
+                    <input type="text" class="form-long-edit" name="cntct-nome" autofocus="true" value="" required />
+                </div>
+                <div class="form-item">
+                    <label for="cntct-email">Email:</label>
+                    <input type="email" class="form-long-edit" name="cntct-email" value="" />
+                </div>
+                <div class="form-item">
+                    <label for="cntct-telefone">Telefone:</label>
+                    <input type="text" id="cntct-telefone" name="cntct-telefone" value="" />
+                </div>
+                <div class="form-item">
+                    <label for="cntct-mensagem">Mensagem:</label>
+                    <textarea name="cntct-mensagem" cols="66" rows="3" id="cntct-comentario"
+                              style="max-width: 500px;" maxlength="400" required></textarea>
+                </div>
+                <div class="form-item">
+                    <span>Como tomou conhecimento da pousada?</span>
+                    <div>
+                        <input type="radio" name="cntct-conhecimento" value="Amigos">Indicação de amigos
+                        <input type="radio" name="cntct-conhecimento" value="Jornal">Jornal ou revista
+                        <input type="radio" name="cntct-conhecimento" value="Site">Site de busca<br />
+                        <input type="radio" name="cntct-conhecimento" value="Outros" checked>Outros
+                    </div>
+                </div>
+                <div class="form-item pos-center" style="margin-bottom: 10px;">
+                    <input type="submit" name="cntct-enviar" value="Enviar" data-role="none" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="right-content" style="width: 420px;">
+
+        <div style="padding: 10px 15px 0 0;">
+            <img class="image-box shaded" src="~/Images/Gallery/Matriz/pousada07.jpg" alt="Ebenezer Village" style="width: 100%;" />
+        </div>
+
+        <p>
+            <strong>Ebenezer Village Hotel Pousada (Matriz)</strong><br />
+            @config.Endereco<br />
+            Fone/Fax: @config.ContatoTelefone | Cel: @config.ContatoCelular | <br />
+            Email: <a href="mailto:@config.ContatoEmail">@config.ContatoEmail</a>
+        </p>
+
+    </div>
+
+    <div class="clear"></div>
+</div>

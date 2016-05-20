@@ -1,0 +1,61 @@
+﻿@using Br.Com.EbenezerVillage.Aplicacao.Auxiliares;
+
+@{
+    Layout = "~/Matriz/_SiteLayout.cshtml";
+    Page.Title = "Apartamentos";
+    Page.ID = Constantes.id_apartamentos;
+}
+
+@* GALERIA DE IMAGENS *@
+<script src="~/Scripts/gallery-definitions.js" type="text/javascript"></script>
+
+<div class="content-panel shaded">
+    <div class="content-title">
+        <h3>Apartamentos</h3>
+    </div>
+
+    <div class="left-content" style="width: 420px; padding-right: 30px;">
+        <div class="highslide-gallery">            <a href="/Images/Gallery/Matriz/pousada15.jpg" class="highslide highslide-first" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Matriz/pousada15.jpg" alt="Apartamentos aconchegantes e bem equipados."
+                     title="Clique para ampliar" />
+            </a>
+
+            <a href="/Images/Gallery/Matriz/pousada14.jpg" class="highslide" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Matriz/pousada14.thumb.jpg" alt="Conforto, segurança e comodidade."
+                     title="Clique para ampliar" />
+            </a>
+
+            <a href="/Images/Gallery/Matriz/pousada16.jpg" class="highslide" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Matriz/pousada16.thumb.jpg" alt="Um ambiente receptivo com decoração sofisticada."
+                     title="Clique para ampliar" />
+            </a>
+
+            <a href="/Images/Gallery/Matriz/pousada13.jpg" class="highslide" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Matriz/pousada13.thumb.jpg" alt="Serviço de Lavanderia e muitas outras facilidades 
+                     para sua comodidade." title="Clique para ampliar" />
+            </a>
+        </div>
+    </div>
+
+    <div class="right-content" style="width: 520px;">
+
+        <p>A <strong>Ebenezer Village</strong> oferece um ambiente aconchegante, com o conforto e a tranquilidade que você merece. 
+            Nossos apartamentos possuem varanda e são equipados com:</p>
+
+        <ul class="simple-list">
+            <li>Ar Condicionado;</li>
+            <li>TV com programação Sky e Claro TV;</li>
+            <li>Frigobar;</li>
+            <li>Ducha Quente;</li>
+            <li>Bancada de Trabalho;</li>
+            <li>Telefone;</li>
+            <li>Cortesia para 01 criança de até 05 anos (no mesmo apartamento);</li>
+        </ul>
+  
+        <p>Pensando na sua comodidade, dispomos também de Serviço de Lavanderia.</p>
+ 
+        <p>Venha para a <strong>Ebenezer Village</strong>, sua casa no Litoral Norte Potiguar.</p>
+    </div>
+
+    <div class="clear"></div>
+</div>

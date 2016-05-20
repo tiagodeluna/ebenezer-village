@@ -1,0 +1,172 @@
+﻿@using Br.Com.EbenezerVillage.Aplicacao;
+@using Br.Com.EbenezerVillage.Aplicacao.Auxiliares;
+@using Br.Com.EbenezerVillage.Dominio;
+
+@{
+    Layout = "~/filial/_SiteLayout.cshtml";
+    Page.Title = "Home";
+    Page.ID = Constantes.id_home;
+}
+
+@{
+    //Recupera configuração do sistema
+    var config = GerenciadorDeConfiguracao.GetConfiguracoesDaFilial(Session);
+
+    //Preenche formulário com valores padrão
+    string sDataEntrada = DateTime.Now.Date.ToString("dd/MM/yyyy");
+    string sDataSaida = (DateTime.Now.Date.AddDays(1)).ToString("dd/MM/yyyy");
+    string sTipoApto = string.Empty;
+
+    //Envio da pré-reserva
+    if (IsPost) {
+        Reserva reserva = new Reserva()
+        {
+            DataEntrada = Request["pbkng-entrada"].AsDateTime().ToString("dd/MM/yyyy"),
+            DataSaida = Request["pbkng-saida"].AsDateTime().ToString("dd/MM/yyyy"),
+            TipoApto = Request["pbkng-apto"]
+        };
+
+        Session.Add(Constantes.variavel_formulario_obj, reserva);
+
+        Response.Redirect("~/filial/reservas");
+    }
+}
+
+@* GALERIA DE IMAGENS *@
+<script src="~/Scripts/gallery-definitions.js" type="text/javascript"></script>
+
+<script>
+    $(function() {
+        $( "#pbkng-entrada" ).datepicker();
+        $( "#pbkng-saida" ).datepicker();
+    });
+
+    //Atribui a imagem "thumb1" como primeira da galeria
+    var miniGalleryOptions1 = {
+	    thumbnailId: 'thumb1'
+    }
+</script>
+
+
+@* IMAGE SLIDER *@
+<div id="orbit-slider">
+    <a href="~/filial/pousada"><img src="~/Images/Gallery/Filial/Slider/banner1.jpg" alt="A sua casa no Litoral Norte Potiguar" /></a>
+    <img src="~/Images/Gallery/Filial/Slider/banner2.jpg" alt="Conforto e lazer em um só lugar" />
+    <img src="~/Images/Gallery/Filial/Slider/banner3.jpg" alt="Venha relaxar e conhecer as belezas de Guamaré" />
+    <img src="~/Images/Gallery/Filial/Slider/banner4.jpg" alt="Um lugar rodeado de belezas naturais" />
+    <img src="~/Images/Gallery/Filial/Slider/banner5.jpg" alt="Perfeito para viver bons momentos com quem você ama" />
+</div>
+
+@* FORMULÁRIO DE RESERVAS *@
+<div id="pre-booking-title"><h3>Reservar</h3></div>
+
+<div id="pre-booking" class="shaded">
+    <form id="pbkng-form" action="" method="post">
+        <div class="pre-booking-item">
+            <label for="pbkng-entrada">Entrada</label>
+            <input type="text" id="pbkng-entrada" class="form-datepicker" name="pbkng-entrada" value="@sDataEntrada" />
+        </div>
+        <div class="pre-booking-item">
+            <label for="pbkng-saida">Sa&iacute;da</label>
+            <input type="text" id="pbkng-saida" class="form-datepicker" name="pbkng-saida" value="@sDataSaida" />
+        </div>
+        <div class="pre-booking-item">
+            <label for="pbkng-apto">Tipo de Apto</label>
+            <select name="pbkng-apto">
+            @foreach(var t in config.TiposDeApartamento)
+            {
+                <option value="@t.Descricao">@t.Descricao</option>
+            }
+            </select>
+        </div>
+        <div class="last-pre-booking-item">
+            <input type="submit" name="pbkng-prosseguir" value="Prosseguir" data-role="none" />
+        </div>
+    </form>
+</div>
+
+@* BLOCOS DE CONTEÚDO *@
+<div>
+    <ul id="content-box" data-role="listview" data-inset="true">
+        <li class="shaded">
+            <div class="head">
+                <h3>Ebenezer Village</h3>
+            </div>
+            <div class="text">
+                <p>
+                    As pousadas da rede Ebenezer foram pensadas e criadas para suprir as necessidades específicas de cada cliente, 
+                    tendo como compromisso primordial o bem estar de seus hóspedes, sempre oferecendo-lhes a melhor solução em 
+                    hospedagem. Conheça nossas tarifas e faça sua reserva!
+                </p>
+            </div>
+            <div class="more">
+                <a class="button" href="~/filial/reservas" title="Conheça nossas Tarifas e faça sua Reserva">Faça já sua Reserva</a>
+            </div>
+        </li>
+
+        <li class="shaded">
+            <div class="head">
+                <h3>Ideal para relaxar</h3>
+            </div>
+            <div class="text">
+                <ul class="simple-list">
+                    <li>Apartamentos bem equipados</li>
+                    <li>Nas diárias está incluso Café da Manhã</li>
+                    <li>Não cobramos Taxa de Serviço</li>
+                    <li>Preços promocionais para grupos ou longos períodos</li>
+                    <li>Cortesia para criança até 5 anos (no mesmo apartamento).</li>
+                </ul>
+            </div>
+            <div class="more">
+                <a class="button" href="~/filial/apartamentos" title="Clique aqui para maiores informações">Saiba mais</a>
+            </div>
+        </li>
+
+        <li class="last shaded">
+            <div class="head">
+                <h3>Fotos</h3>
+            </div>
+            <div class="image">                
+                <div class="highslide-gallery">
+	                <a class='highslide' id="thumb1" href='/Images/Gallery/Filial/pousada01.jpg'
+                        onclick="return hs.expand(this, miniGalleryOptions1)">
+		                <img src='/Images/Gallery/Filial/polaroid.png' alt="Ebenezer Village, a melhor solução 
+                                em hospedagem no Litoral Norte Potiguar" title="Clique para ver mais fotos"/>
+                    </a>
+
+	                <div class="hidden-container">
+                        <a class='highslide' href='/Images/Gallery/Filial/pousada09.jpg'
+                            onclick="return hs.expand(this, miniGalleryOptions1)">
+			                <img src='/Images/Gallery/Filial/pousada09.thumb.jpg' alt="..."/>
+                        </a>
+
+                        <a class='highslide' href='/Images/Gallery/Filial/pousada03.jpg'
+                            onclick="return hs.expand(this, miniGalleryOptions1)">
+			                <img src='/Images/Gallery/Filial/pousada03.thumb.jpg' alt="..."/>
+                        </a>
+
+		                <a class='highslide' href='/Images/Gallery/Filial/pousada05.jpg'
+                            onclick="return hs.expand(this, miniGalleryOptions1)">
+			                <img src='/Images/Gallery/Filial/pousada05.thumb.jpg' alt="..."/>
+                        </a>
+
+		                <a class='highslide' href='/Images/Gallery/Filial/pousada08.jpg'
+                            onclick="return hs.expand(this, miniGalleryOptions1)">
+			                <img src='/Images/Gallery/Filial/pousada08.thumb.jpg' alt="..."/>
+                        </a>
+
+		                <a class='highslide' href='/Images/Gallery/Filial/pousada11.jpg'
+                            onclick="return hs.expand(this, miniGalleryOptions1)">
+			                <img src='/Images/Gallery/Filial/pousada11.thumb.jpg' alt="..."/>
+                        </a>
+
+		                <a class='highslide' href='/Images/Gallery/Filial/pousada10.jpg'
+                            onclick="return hs.expand(this, miniGalleryOptions1)">
+			                <img src='/Images/Gallery/Filial/pousada10.thumb.jpg' alt="..."/>
+                        </a>
+	                </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

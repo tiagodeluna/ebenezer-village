@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="description" content="A melhor solução em hospedagem no litoral norte Potiguar, localizada em Guamaré/RN, 
+          próxima ao Polo Industrial da PETROBRAS e às melhores praias do Nordeste, a Ebenezer Village Hotel Pousada dispõe de 
+          apartamentos novos e completos em estilo flat, estacionamento privativo e uma ampla área de lazer, com piscinas adulto 
+          e infantil com hidromassagem e cascata, churrasqueira, bar, restaurantes, campo de futebol, salão de jogos, WI-FI e TV à cabo.">
+    <meta name="keywords" content="Hotel Pousada Guamaré Lazer Negócios">
+    <title>Ebenezer Village | @Page.Title</title>
+    @* FONTE *@
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
+    @* FOLHAS DE ESTILO *@
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @* ÍCONE *@
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @* SCRIPTS *@
+    <script src="~/Scripts/modernizr-2.5.3.js"></script>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.9.2.custom.js"></script>
+</head>
+<body>
+<div id="page">
+    <header>
+        @* IMAGEM DE TÍTULO *@
+        <div id="welcome-title">
+            <img src="/Images/logo.png" alt="Ebenezer Village Hotel Pousada" />
+        </div>
+    </header>
+
+    <div id="body">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <div id="welcome-footer">
+            <p>&copy; @DateTime.Now.Year Ebenezer Village Hotel Pousada</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

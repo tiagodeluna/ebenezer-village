@@ -1,0 +1,160 @@
+﻿@using Br.Com.EbenezerVillage.Aplicacao;
+@using Br.Com.EbenezerVillage.Aplicacao.Auxiliares;
+@using Br.Com.EbenezerVillage.Dominio;
+
+@{
+    Layout = "~/Filial/_SiteLayout.cshtml";
+    Page.Title = "Reservas & Tarifas";
+    Page.ID = Constantes.id_reservas;
+
+    //Guarda o layout associado à página
+    GerenciadorDeConfiguracao.SetLayout(Session, Layout);
+}
+
+@{
+    //Recupera configuração do sistema
+    var config = GerenciadorDeConfiguracao.GetConfiguracoesDaFilial(Session);
+
+    //Preenche formulário com valores padrão
+    Reserva reserva = new Reserva()
+    {
+       DataEntrada = DateTime.Now.Date.ToString("dd/MM/yyyy"),
+       DataSaida = (DateTime.Now.Date.AddDays(1)).ToString("dd/MM/yyyy"),
+       TipoApto = string.Empty
+    };
+
+    //Recupera dados da pré-reserva da sessão
+    var preReserva = (Reserva)Session[Constantes.variavel_formulario_obj];
+    
+    if (preReserva != null) {
+        reserva.DataEntrada = preReserva.DataEntrada;
+        reserva.DataSaida = preReserva.DataSaida;
+        reserva.TipoApto = preReserva.TipoApto;
+
+        Session.Remove(Constantes.variavel_formulario_obj);
+    }
+
+    //Envio da reserva
+    if(IsPost) {
+        reserva.Nome = Request["bkng-nome"].Trim();
+        reserva.Email = Request["bkng-email"].Trim();
+        reserva.Telefone = Request["bkng-telefone"].Trim();
+        reserva.Cidade = Request["bkng-cidade"].Trim();
+        reserva.DataEntrada = Request["bkng-entrada"].Trim();
+        reserva.DataSaida = Request["bkng-saida"].Trim();
+        reserva.TipoApto = Request["bkng-apto"].Trim();
+        reserva.Comentario = Request["bkng-comentario"].Trim();
+
+        //Envia email solicitando reserva
+        var bEmailEnviado = GerenciadorDeMensagens.EnviarEmailDeReserva(config, reserva);
+
+        //Redireciona para a tela de resposta
+        Response.Redirect(string.Format("~/Filial/Resposta/{0}", bEmailEnviado ? 1 : 0));
+    }
+}
+
+<script>
+    jQuery(function($){
+        $("#bkng-telefone").mask("(99) 9999-9999",{placeholder:" "});
+    });
+
+    $(function() {
+        $( "#bkng-entrada" ).datepicker();
+        $( "#bkng-saida" ).datepicker();
+    });
+</script>
+
+<div class="content-panel shaded">
+    <div class="content-title">
+        <h3>Reservas & Tarifas</h3>
+    </div>
+    
+    <div class="left-content" style="width: 500px;">
+
+        <p><strong>Solicite agora sua reserva preenchendo o formulário abaixo:</strong></p>
+
+        <div class="form-container">
+            <form id="bkng-form" action="" method="post" onsubmit="showLoading()">
+                <div class="form-item">
+                    <label for="bkng-nome">Nome:</label>
+                    <input type="text" class="form-long-edit" name="bkng-nome" autofocus="true" value="@reserva.Nome" required />
+                </div>
+                <div class="form-item">
+                    <label for="bkng-telefone">Telefone:</label>
+                    <input type="text" id="bkng-telefone" name="bkng-telefone" value="@reserva.Telefone" required />
+                </div>
+                <div class="form-item">
+                    <label for="bkng-email">Email:</label>
+                    <input type="email" class="form-long-edit" name="bkng-email" value="@reserva.Email" required />
+                </div>
+                <div class="form-item">
+                    <label for="bkng-cidade">Cidade:</label>
+                    <input type="text" class="form-long-edit" name="bkng-cidade" value="@reserva.Cidade" />
+                </div>
+                <div class="form-item">
+                    <label for="bkng-entrada">Entrada:</label>
+                    <input type="text" id="bkng-entrada" class="form-datepicker" name="bkng-entrada" value="@reserva.DataEntrada" required />
+                </div>
+                <div class="form-item">
+                    <label for="bkng-saida">Sa&iacute;da:</label>
+                    <input type="text" id="bkng-saida" class="form-datepicker" name="bkng-saida" value="@reserva.DataSaida" required />
+                </div>
+                <div class="form-item">
+                    <label for="bkng-apto">Tipo de Apartamento:</label>
+                    <select name="bkng-apto">
+                    @foreach(var t in config.TiposDeApartamento)
+                    {
+                        <option value="@t.Descricao" @(reserva.TipoApto.Equals(t.Descricao) ? "selected" : "")>@t.Descricao</option>
+                    }
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="bkng-comentario">Coment&aacute;rio:</label>
+                    <textarea name="bkng-comentario" cols="66" rows="3" id="bkng-comentario"
+                              style="max-width: 500px;" maxlength="400">@reserva.Comentario</textarea>
+                </div>
+                <div class="form-item pos-center">
+                    <input type="submit" id="bkng-enviar" name="bkng-enviar" value="Enviar" data-role="none" />
+                </div>
+            </form>
+        </div>
+
+        <p>Para maiores informações, entre em contato conosco através dos telefones: @config.ContatoTelefone / @config.ContatoCelular, ou 
+            pelo e-mail: <a href="mailto:@config.ContatoEmail">@config.ContatoEmail</a></p>
+    </div>
+    <div class="right-content" style="width: 420px;">
+        <div style="padding: 10px 15px 0 0;">
+            <img class="image-box shaded" src="~/Images/Gallery/Filial/pousada13.jpg" alt="Ebenezer Village Hotel Pousada" style="width: 100%;" />
+        </div>
+
+        <p><strong>Conheça nossas tarifas:</strong></p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Apartamento</th>
+                    <th>Di&aacute;ria</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach(var t in config.TiposDeApartamento)
+            {
+                <tr>
+                    <td>@t.Descricao</td>
+                    <td>@t.Tarifa.ToString("R$ 0.00")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <p><strong>Informações adicionais:</strong></p>
+        <ul class="simple-list">
+            <li>Apartamentos com TV 42'', internet wi-fi, frigobar e ar condicionado</li>
+            <li>Nas diárias está incluso café da manhã</li>
+            <li>Não cobramos taxa de serviço</li>
+            <li>Cama extra R$ 30,00</li>
+            <li>Preços promocionais para grupos ou longos períodos</li>
+            <li>Cortesia para criança até 5 anos (no mesmo apartamento)</li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

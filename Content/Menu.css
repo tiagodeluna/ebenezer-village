@@ -1,0 +1,147 @@
+/*
+    Menu CSS
+    
+        * Desenvolvido por Lunaware Web Soluctions - 2013
+        * Baseado no modelo [ http://cssmenumaker.com/menu/blue-yellow-rough-drop-down-menu ]
+*/
+
+#hrzmenu,
+#hrzmenu > ul {
+    background-color: #39cbb1;
+    font-family: 'Segoe UI', Sans-Serif;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    z-index: 4;
+}
+#hrzmenu:before,
+#hrzmenu:after,
+#hrzmenu > ul:before,
+#hrzmenu > ul:after {
+  content: '';
+  display: table;
+}
+#hrzmenu:after,
+#hrzmenu > ul:after {
+  clear: both;
+}
+#hrzmenu {
+  width: auto;
+  zoom: 1;
+}
+#hrzmenu > ul {
+  background-color: #3e322e;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#hrzmenu > ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#hrzmenu > ul > li {
+  float: left;
+  position: relative;
+}
+#hrzmenu > ul > li > a {
+  padding: 18px 15px 21px 15px;
+  display: block;
+  color: #39cbb1;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  /*text-shadow: 0 -1px 0 #c28130;
+  text-shadow: 0 -1px 0 rgba(151, 99, 33, 0.43);*/
+  line-height: 18px;
+}
+#hrzmenu > ul > li:hover > a {
+  background-color: #33b59e;
+  color: #fff;
+  /* CSS3 */
+  box-shadow: 0 1px 3px #747474;
+  -webkit-box-shadow: 0 1px 3px #747474;
+  -moz-box-shadow: 0 1px 3px #747474;
+}
+#hrzmenu > ul > li > a > span {
+  line-height: 18px;
+}
+#hrzmenu > ul > li.active > a,
+#hrzmenu > ul > li > a:active {
+  background-color: #39cbb1;
+  color: #fff;
+}
+/* Childs */
+#hrzmenu > ul ul {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 120px;
+  background-color: #33b59e;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  -webkit-transition: all 0.35s 0.2s ease-in-out;
+  -moz-transition: all 0.35s 0.2s ease-in-out;
+  -ms-transition: all 0.35s 0.2s ease-in-out;
+  transition: all 0.35s 0.2s ease-in-out;
+}
+#hrzmenu > ul li:hover ul {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+  color: #000;
+  z-index: 100;
+  top: 57px; /*Altura do submenu*/
+  left: 0;
+}
+#hrzmenu > ul ul:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+}
+#hrzmenu > ul ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+#hrzmenu > ul ul li a {
+  padding: 15px 20px;
+  display: block;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  z-index: 17;
+  width: 170px;
+  border-left: 4px solid transparent;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+#hrzmenu > ul ul li a:hover {
+  border-left: 4px solid #3e322e;
+  background-color: #39cbb1;
+}
+#hrzmenu > ul ul li a:active {
+  background-color: #4a3c37;
+  color: #39cbb1;
+}
+#hrzmenu > ul ul li a.duplex {
+  padding: 9px 20px;
+}
+#hrzmenu > ul ul li a .sub-title {
+  color: #4a3c37;
+  font-size: 11px;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+#hrzmenu > ul ul li a:active .sub-title {
+  color: #fff;
+}

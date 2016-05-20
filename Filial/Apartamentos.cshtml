@@ -1,0 +1,67 @@
+﻿@using Br.Com.EbenezerVillage.Aplicacao.Auxiliares;
+
+@{
+    Layout = "~/Filial/_SiteLayout.cshtml";
+    Page.Title = "Apartamentos";
+    Page.ID = Constantes.id_apartamentos;
+}
+
+@* GALERIA DE IMAGENS *@
+<script src="~/Scripts/gallery-definitions.js" type="text/javascript"></script>
+
+<div class="content-panel shaded">
+    <div class="content-title">
+        <h3>Apartamentos</h3>
+    </div>
+
+    <div class="left-content" style="width: 520px; padding-right: 30px;">
+        <p>Nossos apartamentos são equipados com mobiliário de alta qualidade e contam com decoração requintada, propiciando aos nossos hóspedes 
+            um ambiente agradável onde se respira conforto e tranquilidade. Cada apartamento dispõe de:</p>
+
+        @*<img class="image-box shaded pos-right" src="/Images/Gallery/Filial/pousada02.jpg" alt="Apartamentos confortáveis e finamente decorados."
+            title="Apartamentos confortáveis e finamente decorados." style="width: 450px; margin-top: 15px;" />*@
+
+        <ul class="simple-list">
+            <li>Ar Condicionado Split;</li>
+            <li>TV 42'' (com programação Sky e Claro TV);</li>
+            <li>DVD;</li>
+            <li>Frigobar (com reposição diária de bebidas e amenities);</li>
+            <li>Ducha Quente;</li>
+            <li>Bancada de Trabalho;</li>
+            <li>Internet Wireless (serviço gratuito);</li>
+            <li>Telefone;</li>
+            <li>Secador de cabelo (disponível para empréstimo);</li>
+            <li>Tábua e ferro de passar roupa (disponível para empréstimo);</li>
+            <li>Cofre (disponível para empréstimo);</li>
+            <li>Vaga de estacionamento;</li>
+            <li>Cortesia para 01 criança de até 06 anos (no mesmo apartamento);</li>
+        </ul>
+  
+        <p>Pensando na sua comodidade, dispomos também de Serviço de Lavanderia.</p>
+     </div>
+
+    <div class="right-content" style="width: 420px; margin-top: 15px;">
+        <div class="highslide-gallery">            <a href="/Images/Gallery/Filial/pousada06.jpg" class="highslide highslide-first" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Filial/pousada06.jpg" alt="Apartamentos aconchegantes e bem equipados."
+                     title="Clique para ampliar" />
+            </a>
+
+            <a href="/Images/Gallery/Filial/pousada05.jpg" class="highslide" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Filial/pousada05.thumb.jpg" alt="Um ambiente receptivo com decoração sofisticada."
+                     title="Clique para ampliar" />
+            </a>
+
+            <a href="/Images/Gallery/Filial/pousada03.jpg" class="highslide" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Filial/pousada03.thumb.jpg" alt="Conforto, segurança e comodidade."
+                     title="Clique para ampliar" />
+            </a>
+
+            <a href="/Images/Gallery/Filial/pousada04.jpg" class="highslide" onclick="return hs.expand(this)">
+	            <img class="image-box shaded" src="/Images/Gallery/Filial/pousada04.thumb.jpg" alt="Conforto, segurança e comodidade."
+                     title="Clique para ampliar" />
+            </a>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>

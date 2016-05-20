@@ -1,0 +1,21 @@
+﻿@using Br.Com.EbenezerVillage.Aplicacao;
+@using Br.Com.EbenezerVillage.Aplicacao.Auxiliares;
+
+@{
+    Layout = "~/Matriz/_SiteLayout.cshtml";
+    Page.ID = Constantes.id_resposta;
+    var bEnviado = UrlData[0].AsInt();
+
+    Page.Title = (bEnviado == 1 ? "Email Enviado" : "Erro");
+}
+
+<div class="content-panel shaded">
+    @if(bEnviado == 1)
+    {
+        @RenderPage("~/partes/Mensagem.OK.cshtml")
+    }
+    else
+    {
+        @RenderPage("~/partes/Mensagem.Erro.cshtml")
+    }
+</div>

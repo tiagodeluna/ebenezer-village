@@ -1,0 +1,577 @@
+/*
+    Site CSS
+    
+        * Desenvolvido por Lunaware Web Soluctions - 2013    
+*/
+
+/* Geral - Containers
+----------------------------------------------------------*/
+html {
+    margin: 0;
+    padding: 0;
+}
+
+header, footer, hgroup,
+nav, section {
+    display: block;
+}
+
+body {
+    background-color: #ecebe8;
+    background-image: url('/Images/bkg.png');
+    color: #1f1917;
+    font-family: 'Josefin Sans', 'Segoe UI', Sans-Serif;
+    line-height: 1.5;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* hack para o IE */
+}
+
+#page {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: left; /* "solução" para o hack do IE */
+}
+
+/* Geral - Elementos
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5 {
+    color: #1f1917;
+    font-family: 'Segoe UI', 'Josefin Sans', Sans-Serif;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+a {
+    color: #0d4c45;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+a:hover {
+    color: #29ac95;
+}
+
+img {
+    border: none;
+}
+
+input[type="submit"], input[type="button"], .button {
+    background-color: #29ac95;
+    border: none;
+    color: #fdfcf7;
+    cursor: pointer;
+    font-family: 'Segoe UI', Sans-Serif;
+    font-size: 16px;
+    font-weight: lighter;
+    padding: 5px 15px 8px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* CSS3 */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 1px 2px 5px #b4b4b4;
+    -moz-box-shadow: 1px 2px 5px #b4b4b4;
+    -webkit-box-shadow: 1px 2px 4px rgba(136,136,136, 0.6);
+}
+    
+    input[type="submit"]:hover, input[type="button"]:hover, .button:hover {
+        background-color: #39cbb1;
+        color: #fdfcf7;
+    }
+
+    input[type="submit"]:active, input[type="button"]:active, .button:active {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+
+input[type=text], input[type=email], select, textarea {
+    font-family: 'Josefin Sans', Sans-Serif;
+    font-size: 18px;
+    font-weight: 400;
+    border: 1px solid #aaa;
+    min-height: 28px;
+}
+
+/* Header, Top, Title
+----------------------------------------------------------*/
+#site-title {
+    width: 1000px;
+    height: 130px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#title-logo {
+    float: left;
+    position: relative;
+    height: 105px;
+    width: 360px;
+    margin-top: 15px;
+}
+
+/* Bloco de texto no título */
+#title-box {
+    float: left;
+    position: relative;
+    background-color: #29ac95;
+    height: 90px;
+    margin-left: 410px;
+    margin-top: 40px;
+    text-align: center;
+    width: 200px;
+    /* CSS3 */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+    #title-box h3 {
+        color: #0d4c45;
+        font-size: 25px;
+        margin: 5px 0 0 0;
+    }
+
+    #title-box h4 {
+        color: #ede6ca;
+        font-size: 23px;
+        margin: 0;
+    }
+
+/* Rodapé do título */
+#title-footer {
+    width: 1000px;
+    height: 10px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#title-box-footer {
+    float: left;
+    position: relative;
+    background-color: #29ac95;
+    height: 10px;
+    margin-left: 770px;
+    width: 200px;
+}
+
+
+/* Loading
+--------------------------------------------------------- */
+#loading {
+    position: fixed;
+    display: table; 
+    height: 100%;
+    visibility: hidden;
+    width: 100%;
+    z-index: 100;
+}
+
+#loading-box {
+    *position: absolute;
+    display: table-cell;
+    background-color: #000000;
+    vertical-align: middle;
+    z-index: 101;
+    /* CSS3 */
+    opacity:0.70;
+    -moz-opacity: 0.70;
+    filter: alpha(opacity=70);
+}
+
+#loading-box h3 {
+    margin-top: 0;
+    color: #0094ff;
+}
+
+/* Footer
+--------------------------------------------------------- */
+footer {
+    clear: both;
+}
+
+#footer-container {
+    padding-top: 15px;
+}
+
+#site-footer {
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    width: 1000px;
+}
+
+#site-footer::after {
+    content: "";
+    background: #d2d2d2 url('/Images/bkg-footer.png') no-repeat 54px top;
+    background-size: contain;
+    opacity: 0.35;
+    filter:alpha(opacity=35);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; 
+}
+
+    .footer-logo {
+        position: relative;
+        width: 1000px;
+    }
+
+    #site-footer img.left {
+        height: 55px;
+        margin: 10px 0 0 10px;
+        width: 180px;
+    }
+
+    #site-footer img.right {
+        float:  right;
+        height: 55px;
+        margin: 10px 10px 0 0;
+        /* CSS3 */
+        opacity:0.5;
+        filter:alpha(opacity=50);
+    }
+
+    #site-footer p {
+        float: left;
+        border-right: 1px solid #bbb;
+        color: #666;
+        margin-top: 0;
+        padding-left: 15px;
+        width: 330px;
+    }
+
+    #site-footer p, #site-footer a {
+        font-family: 'Segoe UI', Tahoma, Sans-Serif;
+        font-size: 13px;
+    }
+
+    #site-footer .last {
+        float:  right;
+        padding-top: 20px;
+        text-align: right;
+    }
+    
+        #site-footer .last p {
+            border-right: none;
+            font-size: 12px;
+            padding-right: 10px;
+            width: auto;
+        }
+
+        #site-footer .last a {
+            border: 1px solid #ccc;
+            color: #000;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 2px 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+            #site-footer .last a:hover {
+                border: 1px solid #000;
+                background-color: #333;
+                color: #fff;
+            }
+
+#footer-label {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+    #footer-label p {
+        margin: 5px 0 10px 0;
+        font-size: 18px;
+    }
+
+
+/* Content
+--------------------------------------------------------- */
+/* Painel de conteúdo */
+.content-panel {
+    background-color: #c9c8c8;
+    padding: 0 10px 15px 10px;
+}
+
+    .content-title {
+        border-bottom: 1px solid #29ac95;
+        margin-bottom: 20px;
+        width: 400px;
+    }
+
+    .content-title h3 {
+        font-size: 25px;
+        margin: 0;
+        padding-top: 10px;
+    }
+
+.left-content {
+    position: relative;
+    float: left;
+    padding-right: 50px;
+}
+
+.right-content {
+    position: relative;
+    float: right;
+    padding-right: 10px;
+}
+
+/* Bloco de conteúdo */
+#content-box {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    #content-box>li {
+        float: left;
+        background-color: #c9c8c8;
+        margin-right: 10px;
+        width: 321px;
+    }
+
+    #content-box .text {
+        height: 220px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+        #content-box .text>p {
+            margin-top: 0;
+            padding-left: 10px;
+        }
+
+    #content-box .more {
+        height: 50px;
+        text-align: center;
+    }
+
+        #content-box .more a {
+            display: inline-block;
+            width: 266px;
+            /* CSS3 */
+            border-radius: 0;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+        }
+
+    #content-box h3 {
+        background-color: #3e322e;
+        color: #fff;
+        font-size: 25px;
+        margin: 13px 0 10px 0;
+        padding: 5px 0 9px 0;
+        text-align: center;
+    }
+
+    #content-box .last {
+        margin: 0;
+        height: 354px;
+        width: 337px;
+    }
+
+        #content-box .last h3 {
+            margin-bottom: 3px;
+        }
+
+    #content-box .image {
+        margin-left: 3px;
+        text-align: center;
+    }
+    
+        #content-box .image img {
+            width: 344px;
+        }
+
+/* Bloco de Pré-Reserva */
+#pre-booking-title {
+    width: 1000px;
+    height: 15px;
+    margin: 0 auto;
+}
+
+    #pre-booking-title h3 {
+        position: relative;
+        left: 30px;
+        top: -30px;
+        margin: 0;
+        background-color: #39cbb1;
+        color: #0d4c45;
+        font-size: 25px;
+        height: 42px;
+        padding-top: 3px;
+        text-align: center;
+        width: 180px;
+        z-index: 4;
+        /* CSS3 */
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+
+#pre-booking {
+    background-color: #c9c8c8;
+    height: 70px;
+}
+
+    /* Formulário de Pré-Reserva */
+    .pre-booking-item {
+        float: left;
+        margin: 18px 10px 0 10px;
+    }
+
+    .last-pre-booking-item {
+        float: right;
+        margin: 16px 15px 0 10px;
+    }
+
+
+/* Welcome Page
+----------------------------------------------------------*/
+#welcome-title {
+    width: 1000px;
+    height: 130px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+    #welcome-title img {
+        height: 105px;
+        width: 360px;
+        margin-top: 15px;
+    }
+
+.welcome-msg {
+    color: #29ac95;
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.welcome-text {
+    font-size: 18px;
+    text-align: center;
+}
+
+#welcome-footer {
+    position: fixed;
+    bottom: 0;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+
+/* Classes
+--------------------------------------------------------- */
+/* Limpa dimencionamentos */
+.clear {
+    clear: both;
+}
+
+/* Elemento sombreado */
+.shaded {
+  box-shadow: 1px 2px 5px #747474;
+  -webkit-box-shadow: 1px 2px 5px #747474;
+  -moz-box-shadow: 1px 2px 5px #747474;
+}
+
+/* Elemento com os cantos arredondados */
+.rounded {
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+}
+
+/* Elemento centralizado */
+.pos-center {
+    text-align: center;
+}
+
+/* Elemento alinhado à esquerda */
+.pos-left {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
+
+/* Elemento alinhado à direita */
+.pos-right {
+    position: relative;
+    float: right;
+    margin-left: 10px;
+}
+
+/* Formulário padrão */
+.form-container {
+    padding-left: 10px;
+}
+
+    .form-container label {
+        display: inline-block;
+        width: 170px;
+    }
+
+    /* Item de form. padrão */
+    .form-item {
+        margin-top: 5px;
+        vertical-align: top;
+    }
+
+    .form-long-edit {
+        width: 307px;
+    }
+
+    /* Campo de Data */
+    .form-datepicker {
+        position: relative;
+        width: 150px;
+        z-index: 4;
+    }
+
+/* Container de imagem */
+.image-box {
+    border: 8px solid #ecebe8;
+}
+    a .image-box:hover {
+        border-color: silver;
+    }
+
+/* Tabela simples de dados */
+.data-table {
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #d5d0ce;
+    border: 2px solid #3e322e;
+}
+
+    .data-table th {
+        border-bottom: 1px solid #29ac95;
+    }
+
+/* Lista simples */
+.simple-list {
+    list-style-type: circle;
+}
+
+/* Estilos para páginas com texto longo */
+.long-text h4 {
+    margin-bottom: 0em;
+}
+.long-text p {
+    margin-top: 0em;
+}

@@ -1,0 +1,34 @@
+[Estrutura]
+- Dividir o conteúdo em unidades:
+	Matriz
+	Centro
+
+[Endereço]
+MATRIZ
+    Rodovia RN 227, KM07 - Polo Industrial, Guamaré/RN - CEP: 59598-000
+FILIAL
+	Rua 7 de Setembro, 23 - Centro, Guamaré/RN - CEP: 59598-000
+
+[Telefones]
+MATRIZ
+	(84) 3525 2490
+FILIAL
+	(84) 3525 2449
+    (84) 8705 3765 [Atendimento emergencial]
+	
+[Email]
+MATRIZ
+	contato@pousadaebenezer.com
+FILIAL
+	ebenezer.filial@gmail.com
+	
+[Tipos de Apartamentos]
+MATRIZ
+	Single Luxe
+	Casal Luxe
+	Standard Single
+	Standard Double
+	Standard Triple
+FILIAL
+	Standard Single
+	Standard Double

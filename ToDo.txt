@@ -1,0 +1,27 @@
+TO DO
+
+DONE
+
+- Fazer form de Reservas completo
+- Editar o "Image Slider":
+    - Fazer com que ocupe toda a largura da página
+    - Fazer com que apareça por trás do menu, e não à frente
+- Fazer com que o caption do Highslide fique alinhado à esquerda, e não centralizado
+- Editar a tela "Restaurantes", texto e imagens.
+- Transformar todos os textos de identificação (como o nome da Empresa/Cliente em constantes numa classe C#)
+- Criar estilo padrão para cada um dos elementos básicos do site: a, h1, h2, h3...
+- Exibir uma "mensagem de espera" ao enviar email de reserva ou de contato
+- Organizar todas as imagens do site, por Unidade, e incorporá-las ao conteúdo
+- Personalizar os textos do Highslide
+- Adicionar logo da "Claro TV" no rodapé
+- Implementar slideshow na "Home"
+- Resolver problemas de compatibilidade com o IE
+- Organizar os content-boxes da página "Home"
+- Colocar "Site by Lunaware"
+- Remover "timer" do orbit-slider
+- Criar "Filial/Restaurante"
+- Fazer telas da Filial
+- Finalizar tela de "Seleção da Unidade"
+- Criar os banners do orbit-slider
+- Incorporar imagens da Filial ao site
+- Fazer um refactoring no esquema de emissão de e-mail [igual ao de lunaware.com.br]
